@@ -1,0 +1,153 @@
+<div class="min-h-screen bg-teal-50">
+  <!-- Navbar -->
+  <nav class="blockchain-pattern shadow-lg">
+    <div class="max-w-full mx-auto px-4 py-2 flex justify-between items-center">
+      <h1 class="text-white text-xl font-bold flex items-center">
+        <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        Miner Health Monitor
+      </h1>
+      <span class="text-white">Secure Health Data Management</span>
+    </div>
+  </nav>
+
+  <div class=" mx-auto px-4 py-8">
+    <!-- Stats Overview -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      
+      <div class="bg-white rounded-xl shadow-md p-6 transition-all duration-300 card-hover border-l-4 border-teal-600">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Total Records</h3>
+        <p class="text-3xl font-bold text-teal-600">{{ healthRecordCount }}</p>
+        <p class="text-sm text-gray-500 mt-2">Cloud Entries</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-md p-6 transition-all duration-300 card-hover border-l-4 border-teal-600">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Risk Records</h3>
+        <p class="text-3xl font-bold text-teal-600">{{ healthDefectsCount }}</p>
+        <p class="text-sm text-gray-500 mt-2">Cloud Verified</p>
+      </div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="bg-white rounded-xl shadow-md p-8">
+      <h2 class="text-2xl font-bold text-center text-teal-800 mb-6">
+        REAL-TIME MINER HEALTH MONITORING
+      </h2>
+
+      <p class="text-gray-600 text-center text-lg mb-6">
+        Secure and transparent health monitoring system for mining operations using cloud technology and IoT sensors
+      </p>
+<!-- 
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-teal-50 p-6 rounded-xl hover:shadow-md transition-all duration-300">
+          <h4 class="font-semibold text-teal-800">Vital Monitoring</h4>
+          <p class="text-teal-600">Real-time Health Tracking</p>
+        </div>
+        <div class="bg-teal-50 p-6 rounded-xl hover:shadow-md transition-all duration-300">
+          <h4 class="font-semibold text-teal-800">Air Quality</h4>
+          <p class="text-teal-600">Environmental Analysis</p>
+        </div>
+        <div class="bg-teal-50 p-6 rounded-xl hover:shadow-md transition-all duration-300">
+          <h4 class="font-semibold text-teal-800">Emergency Response</h4>
+          <p class="text-teal-600">Instant Alert System</p>
+        </div>
+      </div> -->
+
+  
+      <!-- Data Table -->
+      <div class="overflow-x-auto flex space-x-8">
+        <div class="shadow-gray-500 m-2 bg-white rounded-xl shadow-lg">
+        <table class=" bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-teal-50">
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">S.No</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Miner Name</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Heart Rate</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Gas Level</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Humidity</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Temperature</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Timestamp</th>
+            </tr>
+          </thead>
+          
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let record of healthRecords; let i = index" class="hover:bg-teal-50 transition-colors duration-200">
+              <td class="py-2 px-3 text-sm text-gray-700">{{ i + 1 }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.name}}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.heartrate }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.gas }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.humidity }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.temperature }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">
+                {{ record.timestamp | date: 'MMM d, y, h:mm a' : 'Asia/Kolkata' }}
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+      <div class="shadow-gray-500 m-2 bg-white rounded-xl shadow-lg">
+        <table class=" bg-white rounded-xl overflow-hidden ">
+          <thead>
+            <tr class="bg-teal-50">
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">S.No</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Miner Name</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Heart Rate</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Gas Level</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Humidity</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Temperature</th>
+              <th class="py-2 px-3 text-left text-xs font-medium text-teal-800 uppercase tracking-wider">Timestamp</th>
+            </tr>
+          </thead>
+          
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let record of healthDefects; let i = index" class="hover:bg-teal-50 transition-colors duration-200">
+              <td class="py-2 px-3 text-sm text-gray-700">{{ i + 1 }}</td>
+              <td class="py-2 px-3 text-sm text-gray-700">{{ record.name }}</td>
+          
+              <td class="py-2 px-3 text-sm text-gray-700"
+                  [ngClass]="record.heartrate.risk ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'">
+                {{ record.heartrate.value }} bpm
+                <div *ngIf="record.heartrate.risk">	Worker under stress, overheating, or fatigue</div>
+              </td>
+          
+              <td class="py-2 px-3 text-sm text-gray-700"
+                  [ngClass]="record.gas.risk ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'">
+                {{ record.gas.value }}
+                <div *ngIf="record.gas.risk">	Poor air quality, risk of toxic gas buildup</div>
+              </td>
+          
+              <td class="py-2 px-3 text-sm text-gray-700"
+                  [ngClass]="record.humidity.risk ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'">
+                {{ record.humidity.value }}%
+                <div *ngIf="record.humidity.risk">	Poor ventilation, excessive sweating</div>
+              </td>
+          
+              <td class="py-2 px-3 text-sm text-gray-700"
+                  [ngClass]="record.temperature.risk ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'">
+                {{ record.temperature.value }}°C
+                <div *ngIf="record.temperature.risk">		High heat exposure, potential heat stress</div>
+              </td>
+          
+              <td class="py-2 px-3 text-sm text-gray-700">
+                {{ record.timestamp | date: 'MMM d, y, h:mm a' : 'Asia/Kolkata' }}
+              </td>
+            </tr>
+          </tbody>
+          
+          
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="blockchain-pattern text-white py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>&copy; {{ 2025 }} Mining Health Monitor. All rights reserved.</p>
+      <p class="text-teal-200 text-sm mt-2">Securing miner's health through cloud technology</p>
+    </div>
+  </footer>
+</div>
