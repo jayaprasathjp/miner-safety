@@ -20,16 +20,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.socket = io('http://localhost:3000');
 
-    // Listen for new data
     this.socket.on('normalData', (data: any) => {
       this.healthRecordCount++;
       this.healthRecords.unshift(data);
-      // if (this.healthRecords.length > 50) this.healthRecords.pop(); // Limit data if needed
     });
     this.socket.on('riskData', (data: any) => {
       this.healthDefectsCount++;
       this.healthDefects.unshift(data);
-      // if (this.healthRecords.length > 50) this.healthRecords.pop(); // Limit data if needed
     });
 
     this.fetchNormalRecords();
